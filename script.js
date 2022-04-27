@@ -1,5 +1,5 @@
-var query = document.querySelector('.queryInput').value
-var apiURL = `http://api.openweathermap.org/data/2.5/forecast?id=524901&appid={302b19a6a4300fb8db031ad4aeaefe4c}`
+// var query = document.querySelector('.queryInput').value
+// var apiURL = `http://api.openweathermap.org/data/2.5/forecast?id=524901&appid={302b19a6a4300fb8db031ad4aeaefe4c}`
 
 
 
@@ -22,9 +22,9 @@ function setformatParam(e) {
     // We need a fetch request to grab info from the libray of c
     // fo=json
     var formatParam = ""
-    var query = document.querySelector('#search-input').value
+    var query = document.querySelector('.queryInput').value
     // value of x
-    var apiURL = `https://www.loc.gov/${formatParam}/?fo=json&q=${query}`;
+    var apiURL = `http://api.openweathermap.org/data/2.5/forecast?id=524901&appid={302b19a6a4300fb8db031ad4aeaefe4c}`
     
     
     getApi(apiURL);
