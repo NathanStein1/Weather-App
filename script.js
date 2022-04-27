@@ -1,5 +1,5 @@
-var query = document.querySelector('.queryInput').value
-var apiURL = `http://api.openweathermap.org/data/2.5/forecast?q=`+query+`&appid=302b19a6a4300fb8db031ad4aeaefe4c`
+// var query = document.querySelector('.queryInput').value
+// var apiURL = `http://api.openweathermap.org/data/2.5/forecast?q=` + query + `&appid=302b19a6a4300fb8db031ad4aeaefe4c`
 
 
 
@@ -12,6 +12,7 @@ function getApi(apiURL) {
         .then(function (data) {
             console.log(data);
         });
+
 }
 getApi();
 
@@ -24,19 +25,20 @@ function setformatParam(e) {
     var formatParam = ""
     var query = document.querySelector('.queryInput').value
     // value of x
-    var apiURL = `http://api.openweathermap.org/data/2.5/forecast?q=`+query+`&appid=302b19a6a4300fb8db031ad4aeaefe4c`
-    
-    
+    var apiURL = `http://api.openweathermap.org/data/2.5/forecast?q=` + query + `&appid=302b19a6a4300fb8db031ad4aeaefe4c`
+
+
     getApi(apiURL);
-    
-    
+
+    var weatherBox = document.querySelector('.weatherSection')
+
+
+    weatherBox.value = data.weather
+
+
     // For loop to grab all the data
-    
-    var menu = document.querySelector('#format-input')
-    var dropDown = menu.value
-    
-console.log(dropDown)
-console.log(query)
+
+
 
 }
 
@@ -44,7 +46,3 @@ var submitBut = document.querySelector('.citysearchBtn')
 
 submitBut.addEventListener('click', setformatParam)
 
-var weatherBox = document.querySelector('.weatherSection')
-
-
-weatherBox.value = data.weather
