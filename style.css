@@ -1,0 +1,32 @@
+.head{
+    background-color: rgb(86, 86, 247);
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+    color: white;
+}
+
+.container1{
+    border: solid;
+    width: 500px;
+    height: 1000px;
+    
+}
+
+
+.container2{
+    border: solid;
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.weatherSection{
+    background-color: aquamarine;
+    position: relative;
+    left: 550px;
+    bottom: 700px;
+    max-width: fit-content;
+
+}
