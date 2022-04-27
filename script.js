@@ -40,4 +40,6 @@ console.log(query)
 
 }
 
-var submitBut = document.querySelector('.btn')
+var submitBut = document.querySelector('.citysearchBtn')
+
+submitBut.addEventListener('click', setformatParam)
