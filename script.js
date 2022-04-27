@@ -1,5 +1,5 @@
-// var query = document.querySelector('.queryInput').value
-// var apiURL = `http://api.openweathermap.org/data/2.5/forecast?id=524901&appid={302b19a6a4300fb8db031ad4aeaefe4c}`
+var query = document.querySelector('.queryInput').value
+var apiURL = `http://api.openweathermap.org/data/2.5/forecast?q=`+query+`&appid={302b19a6a4300fb8db031ad4aeaefe4c}`
 
 
 
@@ -24,7 +24,7 @@ function setformatParam(e) {
     var formatParam = ""
     var query = document.querySelector('.queryInput').value
     // value of x
-    var apiURL = `http://api.openweathermap.org/data/2.5/forecast?id=524901&appid={302b19a6a4300fb8db031ad4aeaefe4c}`
+    var apiURL = `http://api.openweathermap.org/data/2.5/forecast?q=`+query+`&appid={302b19a6a4300fb8db031ad4aeaefe4c}`
     
     
     getApi(apiURL);
