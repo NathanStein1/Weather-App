@@ -68,7 +68,7 @@ var clouds = document.querySelector('.clouds')
 var boxcontain = document.querySelector('.databoxContainer')
 
 const getData = async () => {
-    // weatherBox.innerHTML = "";
+    boxcontain.innerHTML = "";
     
     var query = document.querySelector('.queryInput').value
     // cityTitle.textContent = query
@@ -100,6 +100,7 @@ const getData = async () => {
             databox.appendChild(clouds)
             databox.appendChild(temp)
             databox.appendChild(image)
+            databox.style.paddingRight="10px"
 
 
 
