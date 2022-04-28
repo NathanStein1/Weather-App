@@ -68,6 +68,7 @@ var weatherBox = document.querySelector('.weatherSection')
 
 
 const getData = async () => {
+    weatherBox.innerHTML = "";
     var query = document.querySelector('.queryInput').value
     try {
         const res = await fetch(
@@ -78,6 +79,7 @@ const getData = async () => {
         console.log(data)
         var i = 0;
         for (i = 0; i < 5; i++) {
+            
             var weatherChild = document.createElement('div')
             weatherChild.classList.add('weatherChild')
             weatherChild.textContent = data.list[i].weather[0].description
@@ -88,6 +90,8 @@ const getData = async () => {
 
             weatherBox.appendChild(weatherChild);
             console.log(data.list[i])
+            
+
 
         }
 
