@@ -58,18 +58,20 @@
 
 
 
-// ------------------------------------------------------------------EXPERIMENTAL ASYNC------------------------------------------------------------------
+// ------------------------------------------------------------------ACTUAL CODE------------------------------------------------------------------
 
 
 
 var weatherBox = document.querySelector('.weatherSection')
-
-
-
+var cityTitle = document.querySelector('.cityTitle')
+var clouds = document.querySelector('.clouds')
+var boxcontain = document.querySelector('.databoxContainer')
 
 const getData = async () => {
-    weatherBox.innerHTML = "";
+    // weatherBox.innerHTML = "";
+    
     var query = document.querySelector('.queryInput').value
+    // cityTitle.textContent = query
     try {
         const res = await fetch(
             `https://api.openweathermap.org/data/2.5/forecast?q=` + query + `&appid=302b19a6a4300fb8db031ad4aeaefe4c&units=imperial`
@@ -79,17 +81,35 @@ const getData = async () => {
         console.log(data)
         var i = 0;
         for (i = 0; i < 5; i++) {
+            cityTitle.textContent = query
+
+
+            var databox = document.createElement('div')
+            var iconid = data.list[i].weather[0].icon
+            var iconURL = `http://openweathermap.org/img/w/`+ iconid+ `.png`
+            var temp = document.createElement('div')
+            var clouds = document.createElement('div')
             
-            var weatherChild = document.createElement('div')
-            weatherChild.classList.add('weatherChild')
-            weatherChild.textContent = data.list[i].weather[0].description
+            var image = document.createElement('img')
+            image.src=iconURL
+           
+            clouds.textContent = data.list[i].weather[0].description
+            temp.textContent = data.list[i].main.temp
+            
+            boxcontain.appendChild(databox)
+            databox.appendChild(clouds)
+            databox.appendChild(temp)
+            databox.appendChild(image)
 
-            var weatherChildTemp = document.createElement('div')
-            weatherChildTemp.textContent = data.list[i].main.temp
-            weatherChild.appendChild(weatherChildTemp)
 
-            weatherBox.appendChild(weatherChild);
-            console.log(data.list[i])
+
+        //     var weatherChildTemp = document.createElement('div')
+        //     weatherChildTemp.textContent = data.list[i].main.temp
+        //     weatherChild.appendChild(weatherChildTemp)
+
+        //     weatherBox.appendChild(weatherChild);
+        //     console.log(data.list[i])
+            
             
 
 
