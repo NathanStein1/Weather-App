@@ -1,3 +1,5 @@
+
+
 .head{
     background-color: rgb(86, 86, 247);
     display: flex;
@@ -44,4 +46,12 @@
 .databoxContainer{
     display: flex;
     flex-direction: row;
+}
+
+.createBtn{
+    margin: 1px;
+}
+
+.queryInput{
+    margin-bottom: 20px;
 }
