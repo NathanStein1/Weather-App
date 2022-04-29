@@ -11,8 +11,7 @@ var boxcontain = document.querySelector('.databoxContainer')
 var searchHistoryBtn;
 var searchHistory = document.querySelector('.container2')
 var createBtn = document.createElement('button')
-var lat;
-var long;
+
 // Fetch promise function + appends data from API to Right side of screen
 
 
@@ -21,13 +20,15 @@ var long;
 
 const getData = async () => {
     boxcontain.innerHTML = "";
+    getGeo();
+    
 
 
     var query = document.querySelector('.queryInput').value
 
     try {
         const res = await fetch(
-            `https://api.openweathermap.org/data/2.5/forecast?q=` + query + `&appid=302b19a6a4300fb8db031ad4aeaefe4c&units=imperial`
+            `https://api.openweathermap.org/data/2.5/forecast?q=` + query + `&appid=302b19a6a4300fb8db031ad4aeaefe4c&units=imperial`,
 
         )
 
@@ -50,9 +51,9 @@ const getData = async () => {
 
             createBtn.addEventListener('click', getData)
 
-            if (createBtn.clicked == true) {
-                query = createBtn.textContent
-            }
+            // if (createBtn.clicked == true) {
+            //     query = createBtn.textContent
+            // }
 
 
 
@@ -119,21 +120,33 @@ const getGeo = async () => {
     
             )
     
-            const data = await res.json();
-            console.log(data)
+            const citydata = await res.json();
+            console.log(citydata)
+
+            var lat= citydata[0].lat
+            console.log(lat)
+            var long=citydata[0].lon
+            console.log(long)
+
+            var printlat= document.querySelector('.lat')
+            var printlong= document.querySelector('.long')
+
+            printlat.textContent=lat
+            printlong.textContent=long
             
         }
         catch (error) {
             console.log(error)
         }
-    }
     
+    }
+
 
 
 var submitBut = document.querySelector('.citysearchBtn')
 
     submitBut.addEventListener('click', getData)
-    submitBut.addEventListener('click', getGeo)
+    
 
 
 

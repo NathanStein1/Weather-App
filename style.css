@@ -57,3 +57,7 @@
 .cityTitle{
     font-size: xx-large;
 }
+
+.hide{
+    display: none;
+}
