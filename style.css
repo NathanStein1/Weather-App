@@ -48,10 +48,12 @@
     flex-direction: row;
 }
 
-.createBtn{
-    margin: 1px;
-}
+
 
 .queryInput{
     margin-bottom: 20px;
+}
+
+.cityTitle{
+    font-size: xx-large;
 }
