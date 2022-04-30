@@ -14,11 +14,11 @@ var createBtn = document.createElement('button')
 var currentTitle = document.querySelector(`.currentTitle`)
 // Fetch promise function + appends data from API to Right side of screen
 
-const getGeo = async () => {
+const getGeo = async (query) => {
     boxcontain.innerHTML = "";
 
 
-    var query = document.querySelector('.queryInput').value
+    //var query = document.querySelector('.queryInput').value
 
     try {
         const res = await fetch(
@@ -44,7 +44,7 @@ const getGeo = async () => {
             currentTitle.textContent= "Current:"
         
 
-        
+            getData(printlat,printlong, query);
 
         
     }
@@ -56,7 +56,7 @@ const getGeo = async () => {
 
 
 
-const getData = async () => {
+const getData = async (lat, lon, query) => {
     boxcontain.innerHTML = "";
     currentContain.innerHTML="";
     
@@ -65,8 +65,8 @@ const getData = async () => {
     // console.log(lat)
     
     try {
-        var lat = document.querySelector(".lat")
-        var lon=document.querySelector('.long')
+        //var lat = document.querySelector(".lat")
+        //var lon=document.querySelector('.long')
 
         let latText = lat.textContent
         let lonText = lon.textContent
@@ -99,7 +99,13 @@ const getData = async () => {
             }
 
 
-            createBtn.addEventListener('click', getData)
+            createBtn.addEventListener('click', (e) => {
+                const query = e.target.textContent;
+                getGeo(query)
+            })
+            // if (click==true){
+            //     query==createBtn.textContent
+            // }
 
 
             for (x=0; x < 1; x++) {
@@ -141,6 +147,17 @@ const getData = async () => {
                 databox1.appendChild(humidity1)
                 databox1.appendChild(uv1)
                 databox1.style.paddingRight = "10px"
+
+                if (data.current.uvi <3){
+                    uv1.style.color = "Green"
+                }
+                else if (data.current.uvi <6 && data.current.uvi > 3){
+                    uv1.style.color="Yellow"
+
+                }
+                else if (data.current.uvi > 6){
+                    uv1.style.color="Red"
+                }
             }
 
             
@@ -194,6 +211,17 @@ const getData = async () => {
                 databox.appendChild(uv)
                 databox.style.paddingRight = "10px"
 
+                if (data.daily[i+1].uvi <3){
+                    uv.style.color = "Green"
+                }
+                else if (data.daily[i+1].uvi <6 && data.daily[i+1].uvi >= 3){
+                    uv.style.color="Yellow"
+
+                }
+                else if (data.daily[i+1].uvi >= 6){
+                    uv.style.color="Red"
+                }
+
 
 
             }
@@ -208,41 +236,11 @@ const getData = async () => {
     }
 
 
-var timeLeft= 2
+
 var submitBut = document.querySelector('.citysearchBtn')
 
-submitBut.addEventListener('click', getGeo)
+submitBut.addEventListener('click', (e) => {
+    const query = document.querySelector('.queryInput').value
+    getGeo(query)
+})
 
-
-    submitBut.addEventListener('click', getData)
-
-
-
-
-
-    // var timeInterval;
-
-    // function time() {
-    
-    //     timeInterval = setInterval(function () {
-    //         timeLeft--;
-    //         if (timeLeft = 0) {
-    //             clearInterval(timeInterval);
-    //             getData();
-    //         }
-    
-    //     }, 1000);
-    
-    // }
-
-
-// 1. The search function which takes a search term as an argument.
-//  This ones does the actual search and update of the UI.
-
-
-// 2. A function that gets the value of the search
-//  input and passes that to the search function.
-
-
-// 3. Add a function to the search history buttons that gets
-// the value of the button that was clicked and passes that to the search function.
