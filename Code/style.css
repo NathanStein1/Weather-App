@@ -1,6 +1,4 @@
-
-
-.head{
+.head {
     background-color: rgb(86, 86, 247);
     display: flex;
     justify-content: center;
@@ -8,15 +6,15 @@
     color: white;
 }
 
-.container1{
+.container1 {
     border: solid;
     width: 500px;
     height: 1000px;
-    
+
 }
 
 
-.container2{
+.container2 {
     border: solid;
     display: flex;
     flex-direction: column;
@@ -24,54 +22,58 @@
 }
 
 
-.weatherSection{
-    background-color: rgb(95, 236, 189);
+.weatherSection {
+    
     position: relative;
     left: 550px;
     bottom: 880px;
     max-width: fit-content;
+    color: white;
 
 }
 
-.databox{
+.databox {
     border-style: solid;
     border: 10px;
     width: 20px;
     height: 20px;
     margin: 10px;
     padding: 20px;
+    
 }
 
 
-.databoxContainer{
+.databoxContainer {
     display: flex;
     flex-direction: row;
+    /* background-color: rgb(86, 86, 247); */
 }
 
 
 
-.queryInput{
+.queryInput {
     margin-bottom: 20px;
 }
 
-.cityTitle{
+.cityTitle {
     font-size: xx-large;
+    color: rgb(0, 0, 0);
 }
 
-/* .hide{
-    display: none;
-} */
 
-
-.currentSection{
+.currentSection {
     background-color: rgb(238, 185, 70);
     position: relative;
     left: 550px;
     bottom: 859px;
     max-width: fit-content;
-    
+
 }
 
-.currentTitle{
+.currentTitle {
     font-size: xx-large;
+}
+
+.lat, .long{
+    color: black;
 }
