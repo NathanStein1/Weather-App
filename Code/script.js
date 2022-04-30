@@ -13,7 +13,7 @@ var searchHistory = document.querySelector('.container2')
 var createBtn = document.createElement('button')
 var currentTitle = document.querySelector(`.currentTitle`)
 
-
+// Need to get latitude and longitude, so getGeo grabs that info to feed to the OneApi
 const getGeo = async (query) => {
     boxcontain.innerHTML = "";
 
@@ -55,7 +55,7 @@ const getGeo = async (query) => {
 }
 
 
-
+// This function uses the One Call Api using the lat and lon from the other Api
 const getData = async (lat, lon, query) => {
     boxcontain.innerHTML = "";
     currentContain.innerHTML = "";
@@ -90,6 +90,7 @@ const getData = async (lat, lon, query) => {
 
 
         var createBtn = document.createElement('button')
+        // Store query to local storage
 
         createBtn.textContent = query
         searchHistory.appendChild(createBtn)
@@ -102,6 +103,8 @@ const getData = async (lat, lon, query) => {
             const query = e.target.textContent;
             getGeo(query)
         })
+
+        // This loop creates the Current conditions
 
 
 
@@ -159,7 +162,7 @@ const getData = async (lat, lon, query) => {
             }
         }
 
-
+// This loops to the main 5 day
         for (i = 0; i < 5; i++) {
 
 
