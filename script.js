@@ -7,11 +7,11 @@ var weatherBox = document.querySelector('.weatherSection')
 var cityTitle = document.querySelector('.cityTitle')
 var clouds = document.querySelector('.clouds')
 var boxcontain = document.querySelector('.databoxContainer')
-
+var currentContain = document.querySelector('.currentContainer')
 var searchHistoryBtn;
 var searchHistory = document.querySelector('.container2')
 var createBtn = document.createElement('button')
-
+var currentTitle = document.querySelector(`.currentTitle`)
 // Fetch promise function + appends data from API to Right side of screen
 
 const getGeo = async () => {
@@ -41,6 +41,7 @@ const getGeo = async () => {
             cityTitle.textContent = query
             printlat.textContent=lat
             printlong.textContent=long
+            currentTitle.textContent= "Current:"
         
 
         
@@ -57,7 +58,7 @@ const getGeo = async () => {
 
 const getData = async () => {
     boxcontain.innerHTML = "";
-    
+    currentContain.innerHTML="";
     
     var query = document.querySelector('.queryInput').value
     
@@ -100,9 +101,51 @@ const getData = async () => {
 
             createBtn.addEventListener('click', getData)
 
-            // if (createBtn.clicked == true) {
-            //     query = createBtn.textContent
-            // }
+
+            for (x=0; x < 1; x++) {
+                
+
+                var databox1 = document.createElement('div')
+                var iconid1 = data.current.weather[0].icon
+                var iconURL1 = `http://openweathermap.org/img/w/` + iconid1 + `.png`
+                var temp1 = document.createElement('div')
+                
+                var image1 = document.createElement('img')
+                var date1 = document.createElement('div')
+                var wind1 = document.createElement('div')
+                var humidity1 = document.createElement('div')
+                var uv1 = document.createElement('div')
+
+                var unixTime1 = data.current.dt
+                var milli1= unixTime1 * 1000
+                var dateobject1 = new Date(milli1)
+                var dateformat1 = dateobject1.toLocaleString()
+                console.log(dateformat1)
+
+                date1.textContent= dateformat1
+
+                image1.src = iconURL1
+                
+                temp1.textContent = data.current.temp
+                wind1.textContent = "Wind Speed: " + data.current.wind_speed
+                humidity1.textContent = "Humidity: " + data.current.humidity
+                uv1.textContent = "UV Index: " + data.current.uvi
+
+                currentContain.appendChild(databox1)
+                
+                
+                databox1.appendChild(image1)
+                databox1.appendChild(date1)
+                databox1.appendChild(temp1)
+                databox1.appendChild(wind1)
+                databox1.appendChild(humidity1)
+                databox1.appendChild(uv1)
+                databox1.style.paddingRight = "10px"
+            }
+
+            
+
+
 
 
 
@@ -114,35 +157,42 @@ const getData = async () => {
 
 
                 var databox = document.createElement('div')
-                var iconid = data.daily[i].weather[0].icon
+                var iconid = data.daily[i+1].weather[0].icon
                 var iconURL = `http://openweathermap.org/img/w/` + iconid + `.png`
                 var temp = document.createElement('div')
                 
                 var image = document.createElement('img')
-                // var date = document.createElement('div')
+                var date = document.createElement('div')
                 var wind = document.createElement('div')
-                // var humidity = document.createElement('div')
-                // var uv = document.createElement('div')
+                var humidity = document.createElement('div')
+                var uv = document.createElement('div')
 
-                // let nextDay= i + 8
-                // console.log(nextDay)
+                var unixTime = data.daily[i+1].dt
+                var milli= unixTime * 1000
+                var dateobject = new Date(milli)
+                var dateformat = dateobject.toLocaleString()
+                console.log(dateformat)
+
+                date.textContent= dateformat
 
                 image.src = iconURL
                 
-                temp.textContent = data.daily[i].temp.day
-                // date.textContent = data.list[i].dt_txt
-                wind.textContent = "Wind Speed: " + data.daily[i].wind_speed
-                // humidity.textContent = "Humidity: " + data.list[i].main.humidity
-                // uv.textContent = "UV Index: " +
-
-                    boxcontain.appendChild(databox)
+                temp.textContent = data.daily[i+1].temp.day
                 
-                databox.appendChild(temp)
+                wind.textContent = "Wind Speed: " + data.daily[i+1].wind_speed
+                humidity.textContent = "Humidity: " + data.daily[i+1].humidity
+                uv.textContent = "UV Index: " + data.daily[i+1].uvi
+
+                boxcontain.appendChild(databox)
+                
+                
                 databox.appendChild(image)
-                // databox.appendChild(date)
+                databox.appendChild(date)
+                databox.appendChild(temp)
                 databox.appendChild(wind)
-                // databox.appendChild(humidity)
-                // databox.style.paddingRight = "10px"
+                databox.appendChild(humidity)
+                databox.appendChild(uv)
+                databox.style.paddingRight = "10px"
 
 
 

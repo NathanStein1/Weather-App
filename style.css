@@ -28,8 +28,8 @@
     background-color: aquamarine;
     position: relative;
     left: 550px;
-    bottom: 700px;
-    
+    bottom: 880px;
+    max-width: fit-content;
 
 }
 
@@ -61,3 +61,17 @@
 /* .hide{
     display: none;
 } */
+
+
+.currentSection{
+    background-color: rgb(255, 236, 127);
+    position: relative;
+    left: 550px;
+    bottom: 859px;
+    max-width: fit-content;
+    
+}
+
+.currentTitle{
+    font-size: xx-large;
+}
