@@ -22,7 +22,7 @@ const getGeo = async (query) => {
 
     try {
         const res = await fetch(
-            `http://api.openweathermap.org/geo/1.0/direct?q=` + query + `&appid=302b19a6a4300fb8db031ad4aeaefe4c`
+            `https://api.openweathermap.org/geo/1.0/direct?q=` + query + `&appid=302b19a6a4300fb8db031ad4aeaefe4c`
 
         )
 
@@ -113,7 +113,7 @@ const getData = async (lat, lon, query) => {
 
             var databox1 = document.createElement('div')
             var iconid1 = data.current.weather[0].icon
-            var iconURL1 = `http://openweathermap.org/img/w/` + iconid1 + `.png`
+            var iconURL1 = `https://openweathermap.org/img/w/` + iconid1 + `.png`
             var temp1 = document.createElement('div')
 
             var image1 = document.createElement('img')
@@ -168,7 +168,7 @@ const getData = async (lat, lon, query) => {
 
             var databox = document.createElement('div')
             var iconid = data.daily[i + 1].weather[0].icon
-            var iconURL = `http://openweathermap.org/img/w/` + iconid + `.png`
+            var iconURL = `https://openweathermap.org/img/w/` + iconid + `.png`
             var temp = document.createElement('div')
 
             var image = document.createElement('img')
