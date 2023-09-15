@@ -237,5 +237,13 @@ var submitBut = document.querySelector('.citysearchBtn')
 submitBut.addEventListener('click', (e) => {
     const query = document.querySelector('.queryInput').value
     getGeo(query)
+
+
+    // FIX FOR DUPLICATE CALLS
+    
+    // var cleanCut = document.querySelector('.queryInput')
+    // cleanCut.value = "";
+    // console.log(cleanCut.value, cleanCut.textContent)
+
 })
 
